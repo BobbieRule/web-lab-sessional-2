@@ -1,0 +1,13 @@
+h1 {
+  font-size: 4rem;
+}
+
+.product {
+  margin: 2em;
+  padding-bottom: 0.5em;
+}
+
+#getOneHeading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}

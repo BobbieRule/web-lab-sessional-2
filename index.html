@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Products</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="./script.js"></script>
+
+    <section class="container">
+      <h1>Products</h1>
+      <button class="btn btn-info" id="addButton">Add a Product</button>
+      <button class="btn btn-info" id="reloadButton">
+        Get All Products Again
+      </button>
+      <hr />
+
+      <div class="form-group">
+        <label for="ID"><span id="getOneHeading">Get One Product</span></label>
+        <input
+          type="text"
+          class="form-control"
+          name="ID"
+          id="searchID"
+          aria-describedby="helpId"
+          placeholder="Enter Product ID"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" id="searchButton">
+        Submit
+      </button>
+      <hr />
+      <div id="products">Loading...</div>
+    </section>
+
+    <!-- Add Product Modal -->
+    <div
+      class="modal fade"
+      id="addModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Product</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="addName">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="addName"
+                id="addName"
+                aria-describedby="helpName"
+                placeholder="Enter Name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="addPrice">Price</label>
+              <input
+                type="text"
+                class="form-control"
+                name="addPrice"
+                id="addPrice"
+                aria-describedby="helpPrice"
+                placeholder="Enter Price"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="addColor">Color</label>
+              <input
+                type="text"
+                class="form-control"
+                name="addColor"
+                id="addColor"
+                aria-describedby="helpColor"
+                placeholder="Enter Color"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="addDepartment">Department</label>
+              <input
+                type="text"
+                class="form-control"
+                name="addDepartment"
+                id="addDepartment"
+                aria-describedby="helpDepartment"
+                placeholder="Enter Department"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="addDescription">Description</label>
+              <textarea
+                class="form-control"
+                name="addDescription"
+                id="addDescription"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" id="addModalButton">
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Update Modal -->
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="updateModelTitleId"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Update Product</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="updatedName">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="updatedName"
+                id="updatedName"
+                aria-describedby="helpUpdatedName"
+                placeholder="Enter Updated Name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="updatedPrice">Price</label>
+              <input
+                type="text"
+                class="form-control"
+                name="updatedPrice"
+                id="updatedPrice"
+                aria-describedby="helpUpdatedPrice"
+                placeholder="Enter Updated Price"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="updatedColor">Color</label>
+              <input
+                type="text"
+                class="form-control"
+                name="updatedColor"
+                id="updatedColor"
+                aria-describedby="helpUpdatedColor"
+                placeholder="Enter Updated Color"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="updatedDepartment">Department</label>
+              <input
+                type="text"
+                class="form-control"
+                name="updatedDepartment"
+                id="updatedDepartment"
+                aria-describedby="helpUpdatedDepartment"
+                placeholder="Enter Updated Department"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="updatedDescription">Description</label>
+              <textarea
+                class="form-control"
+                name="updatedDescription"
+                id="updatedDescription"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="updateModalButton"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
